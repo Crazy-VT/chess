@@ -1,0 +1,71 @@
+@import "var";
+@import "maxin";
+.box{
+  width: $w;
+  height: $w;
+  background: #eec208;
+  @include center($w,$w);
+}
+.chess{
+  width: 2*$r - 6;
+  height: 2*$r - 6;
+  border-radius: 50%;
+  float: left;
+  margin: 3px;
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+}
+.black{
+  background: black;
+  border: 1px solid white;
+}
+.white{
+  background: white;
+  border: 1px solid white;
+}
+.heng{
+  width: $w - $r*2;
+  height: 1px;
+  background: #000000;
+  position: absolute;
+  left: $r;
+  transform: translate3d(-300%,0,0);
+  animation: through 1s 1 ease-in forwards;
+}
+.shu{
+  height: $w - $r*2;
+  width: 1px;
+  background: #000;
+  position: absolute;
+  top: $r ;
+  transform: translate3d(0,-300%,0);
+  animation: down 1s 1 ease-in forwards;
+}
+@for $i from 1 through 15{
+  .heng:nth-of-type(#{$i}){
+    top: (2*$i - 1 ) * $r;
+    animation-delay: 200ms* $i;
+  }
+  .shu:nth-of-type(#{$i}){
+    left: (2*$i - 1 ) * $r;
+    animation-delay: 200ms* $i;
+  }
+}
+@keyframes down {
+  from{
+    transform: translate3d(0,-300%,0);
+  }
+  to{
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes through {
+  from{
+    transform: translate3d(-300%,0,0);
+  }
+  to{
+    transform: translate3d(0,0,0);
+  }
+}
+
