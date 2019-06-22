@@ -39,7 +39,7 @@ $(function () {
             if(AI){
                 let pos=aifn();
                 // console.log(pos);
-                blank[pos]=true;
+                black[pos]=true;
                 $('#'+pos).addClass('black');
                 delete blank[pos];
                 console.log(iswin(black,pos));
